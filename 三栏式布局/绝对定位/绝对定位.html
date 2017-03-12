@@ -1,0 +1,54 @@
+<!--该方法有个明显的缺点，就是如果中间栏含有最小宽度限制，或是含有宽度的内部元素，当浏览器宽度小到一定程度，会发生层重叠的情况-->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>绝对定位</title>
+  <style>
+    body, html {
+      height: 100%;
+      padding: 0;
+      margin: 0;
+    }
+
+    .left, .right {
+      position: absolute;
+      top: 0;
+      background: red;
+      height: 100%;
+    }
+
+    .left {
+      left: 0;
+      width: 100px;
+    }
+
+    .right {
+      right: 0;
+      width: 200px;
+    }
+
+    .main {
+      margin-left: 100px;
+      margin-right: 200px;
+      height: 100%;
+      background: blue;
+    }
+    .inner{
+      width:90%;
+      height:100%;
+      background: yellow;
+    }
+  </style>
+<body>
+<div class="left">left</div>
+<div class="main">
+  main
+  <div class="inner">
+    inner
+  </div>
+</div>
+<div class="right">right</div>
+</body>
+</html>

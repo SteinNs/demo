@@ -1,0 +1,63 @@
+<!--双飞翼：与圣杯类似，只不过是取消了外层的padding，从而使内容盒等于padding-box从而避免了.left上移后需要设置left值移动到padding，
+同时用main的margin来达到外层padding效果-->
+<!--问题：与圣杯一样-->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>双飞翼</title>
+  <style>
+    body, html {
+      height: 100%;
+      padding: 0;
+      margin: 0;
+    }
+    body{
+      /*padding-left:100px;*/
+      /*padding-right:200px;*/
+    }
+    .left{
+      background: red;
+      width:100px;
+      float: left;
+      margin-left:-100%;/*-100% 1：是为了超出body内容(此时body内容为100%)最左 2：到达body上层内容最左也就是视窗最左
+      /*position: relative;*/
+      /*left:-100px;*/
+      height:100%;
+    }
+    .main{
+      background: blue;
+      width:100%;
+      height:100%;
+      float: left;
+    }
+    .right{
+      background:red;
+      width:200px;
+      height:100%;
+      float: left;
+      margin-left:-200px;/*-200px 1：是为了超出body内容(此时body内容为100%)最左 2：到达body上层内容最右也就是视窗最右
+      /*position: relative;*/
+      /*right:-200px;*/
+    }
+    .inner{
+      margin-left:100px;
+      margin-right:200px;
+    }
+  </style>
+</head>
+<body>
+<div class="main">
+  <div class="inner">
+    main
+  </div>
+</div>
+<div class="left">
+  left
+</div>
+<div class="right">
+  right
+</div>
+
+</body>
+</html>

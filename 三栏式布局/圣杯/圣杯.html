@@ -1,0 +1,55 @@
+<!--圣杯布局实现原理：通过margin为负值从而超出外层内容盒，从而上移到上层-->
+<!--问题：如果外层内容盒宽度过小，不足以容纳.left的宽度，那么.left依然会被保留在下层-->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+  <style>
+    body, html {
+      height: 100%;
+      padding: 0;
+      margin: 0;
+    }
+    body{
+      padding-left:100px;
+      padding-right:200px;
+    }
+    .left{
+      background: red;
+      width:100px;
+      float: left;
+      margin-left:-100%;/*-100%：1、导致left超出body内容(此时body内容宽度只有100%-200-100）移到上层2：margin是根据父元素的宽度的，所以-100%就到上层body内容的最前*/
+      position: relative;
+      left:-100px;/*-100px为了超出body内容左边,到达视窗最左*/
+      height:100%;
+    }
+    .main{
+      background: blue;
+      width:100%;
+      height:100%;
+      float: left;
+    }
+    .right{
+      background:red;
+      width:200px;
+      height:100%;
+      float: left;
+      margin-left:-200px;/*-200px为了超出body内容到达上一层body内容最后*/
+      position: relative;
+      right:-200px;/*-200px是为了向右偏移回到视窗最右*/
+    }
+    .container{
+      width:500px;
+      height:200px;
+    }
+  </style>
+</head>
+<body>
+<div class="main">main</div>
+<div class="left">left</div>
+<div class="right">right</div>
+
+</body>
+</html>
